@@ -1,5 +1,13 @@
 # 📊 **Understanding Bitcoin Price Movements Through Behavioral Data**
 
+> **Key findings**
+> - Integrated **4 data sources** (Yahoo Finance prices, millions of tweets, Google Trends, Crypto Fear & Greed Index) into a 2-year daily dataset (Feb 2021 – Jan 2023).
+> - **No behavioral indicator** showed a statistically significant relationship with next-day returns (all Pearson p-values > 0.05).
+> - Logistic Regression and Random Forest, trained on **94 engineered features**, reached **~49–53% accuracy**, close to random chance.
+> - The results are consistent with the **Efficient Market Hypothesis**: public sentiment appears to be priced in already.
+
+**Tech stack:** Python · pandas · NumPy · SciPy · scikit-learn · matplotlib · seaborn · VADER · yfinance
+
 ## 🧩 1. Project Overview
 
 This project investigates whether **behavioral indicators** can help explain or anticipate **Bitcoin's short-term price movements**.  
@@ -97,6 +105,8 @@ Key findings from EDA:
 - Fear & Greed Index moves between phases but shows **weak alignment with daily returns**  
 - Correlation heatmap reveals **weak linear relationships** between behavioral and price features
 
+<p align="center"><img src="images/correlation_matrix.png" alt="Correlation matrix of price, sentiment and behavioral indicators" width="650"></p>
+
 ---
 
 ## 🧪 7. Hypothesis Testing Results
@@ -150,6 +160,8 @@ Two models were trained to predict **next-day price direction (Up/Down)**:
 | **Precision** | 45.71% | 48.78% |
 | **Recall** | 49.23% | 30.77% |
 | **F1-Score** | 47.41% | 37.74% |
+
+<p align="center"><img src="images/model_comparison.png" alt="Model performance comparison: Logistic Regression vs Random Forest" width="650"></p>
 
 **Key Observations:**
 - Both models performed near **random chance (~50%)**
@@ -227,7 +239,7 @@ The finding that behavioral indicators lack predictive power is itself valuable 
 ## 📁 12. Project Structure
 
 ```
-Dsa-210/
+Crypto-Price-Prediction/
 ├── csv_files/
 │   ├── bitcoin_adjusted.csv
 │   ├── bitcoin_price.csv
@@ -244,9 +256,13 @@ Dsa-210/
 │   ├── merging_and_testing_eda.py
 │   ├── ml.py
 │   └── testing_hyptests.py
+├── images/
+│   ├── correlation_matrix.png
+│   └── model_comparison.png
 ├── main.ipynb
 ├── README.md
-└── requirements.txt
+├── requirements.txt
+└── termproject_summary.pdf
 ```
 
 ---
@@ -255,8 +271,8 @@ Dsa-210/
 
 ```bash
 # Clone the repository
-git clone https://github.com/mertkilic07/Dsa-210-Term-Project.git
-cd Dsa-210-Term-Project
+git clone https://github.com/mertkilic07/Crypto-Price-Prediction.git
+cd Crypto-Price-Prediction
 
 # Install dependencies
 pip install -r requirements.txt
